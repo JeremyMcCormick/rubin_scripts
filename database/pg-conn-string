@@ -1,7 +1,5 @@
 #!/bin/bash
 
 set -e
-
 $(dirname $0)/pg-check-env
-
 echo postgresql://$PGUSER:$PGPASSWORD@$PGHOST:$PGPORT/$PGDATABASE

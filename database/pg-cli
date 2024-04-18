@@ -1,18 +1,4 @@
 #!/bin/bash
 
 set -e
-
-$(dirname $0)/pg-check-env
-
-if [ -z "$PGPORT" ]; then
-    PGPORT=5432
-fi
-
-if [ -z "$PGHOST" ]; then
-    PGHOST=localhost
-fi
-
-# PGPASSWORD=rubin && psql -h localhost -U rubin -d ivoa -W
-pg_conn_string=$($(dirname $0)/pg-conn-string)
-echo "Connecting to $pg_conn_string ..."
-psql $pg_conn_string
+psql $($(dirname $0)/pg-conn-string)

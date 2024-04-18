@@ -10,6 +10,14 @@ for var in "${vars_to_check[@]}"; do
     fi
 done
 
+if [ -z "$PGPORT" ]; then
+    export PGPORT=5432
+fi
+
+if [ -z "$PGHOST" ]; then
+    export PGHOST=localhost
+fi
+
 if [ "$error" -eq 1 ]; then
     exit 1
 fi
