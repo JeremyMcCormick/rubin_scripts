@@ -1,0 +1,15 @@
+#!/bin/bash
+
+error=0
+vars_to_check=("PGUSER" "PGPASSWORD" "PGDATABASE")
+
+for var in "${vars_to_check[@]}"; do
+    if [ -z "${!var}" ]; then
+        echo "ERROR: $var is not set in the environment"
+        error=1
+    fi
+done
+
+if [ "$error" -eq 1 ]; then
+    exit 1
+fi
